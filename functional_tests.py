@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 import unittest
 
 class NewVisitorTest(unittest.TestCase):
@@ -13,13 +14,24 @@ class NewVisitorTest(unittest.TestCase):
     def test_can_start_a_list_and_retrieve_it_later(self):
         # El ususario va a la pagina del CRM de USA-EJH
         self.browser.get('http://localhost:8000')
-        self.assertIn('Promocion USA-EJH', self.browser.title)
-        self.fail('Finish the test!')
+        self.assertIn('CRM EJH-USA', self.browser.title)
 
-# Ingresa sus credenciales de acceso
+        # Ingresa sus credenciales de acceso
+        inputbox = self.browser.find_element_by_id('id_usuario')
+        self.assertEqual(inputbox.get_attribute('placeholder'),
+                        'Usuario')
+        inputbox.send_keys('prueba')
 
-# Dependiendo de su perfil (grupo) puede ver el menu de opciones para capturar
-# modificar o eliminar informacion
+        inputbox = self.browser.find_element_by_id('id_password')
+        self.assertEqual(inputbox.get_attribute('placeholder'),
+                        'Password')
+        inputbox.send_keys('1234')
+
+        inputbox.send_keys(Keys.ENTER)
+                        
+        # Dependiendo de su perfil (grupo) puede ver el menu de opciones para capturar
+        # modificar o eliminar informacion
+        
 
 # Becarios: pueden capturar datos de prospectos y realizar llamadas a prospectos
 
