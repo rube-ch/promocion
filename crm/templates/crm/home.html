@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<title>CRM EJH-USA</title>
+	</head>
+	<body>
+		<h1>Escribe tu usuario y password</h1>
+		<form name="login" action="/prospectos/nuevo" method="Post">
+			<input id="id_usuario" placeholder="Usuario" />
+			<input type="password" id="id_password" placeholder="Password" />
+			<input type="submit" id="id_ingreso" value="Ingresa" />
+			{% csrf_token %}
+		</form>
+	</body>
+</html>
