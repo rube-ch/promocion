@@ -19,6 +19,8 @@ except:
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+ADMINS = (('Webmaster','sistemas@usa.edu.mx'))
+MANAGERS = ADMINS
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -27,11 +29,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '(xbdsb7u(gj*dwty59+x57k@by8sv=$5lr#n5kf$a1*8x-@z8*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if HOSTNAME == 'CIN':
+    DEBUG = True
+else:
+    DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = []
+if HOSTNAME == 'CIN':
+    ALLOWED_HOSTS = []
+else:
+    ALLOWED_HOSTS = ['cin.pythonanywhere.com']
 
 
 # Application definition

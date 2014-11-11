@@ -6,6 +6,6 @@ from prospectos.views import *
 urlpatterns = patterns('',
 
     # Main crm entrance.
-    (r'^nuevo/', prospecto_nuevo),
+    (r'^nuevo/$', prospecto_nuevo),
 
 )
