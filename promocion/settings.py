@@ -10,6 +10,13 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import socket
+
+try:
+    HOSTNAME = socket.gethostname()
+except:
+    HOSTNAME = 'CIN'
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -58,19 +65,32 @@ WSGI_APPLICATION = 'promocion.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-DATABASES = {
+if HOSTNAME == 'CIN':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+else:
+    DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'cin$crm',
+        'USER': 'cin',
+        'PASSWORD': 'Temporal',
+        'HOST': 'mysql.server',
     }
 }
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
 LANGUAGE_CODE = 'es-mx'
 
-TIME_ZONE = 'Americas/Mexico_City'
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 
