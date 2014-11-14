@@ -8,19 +8,42 @@
 {% endblock %}
 
 {% block body %}
-  <header>
-    <h1>EJH-USA | CRM</h1>
-  </header>
+  <div role="navigation" class="navbar navbar-default navbar-static-top">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a href="/crm/" class="navbar-brand">Inicio</a>
+          </div>
+          <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                  <li>
+                      <a data-toggle="tab" href="/prospectos/nuevo/" onclick="tabAction(this)">
+                          <i class="fa fa-flag">
+                          </i>
+                          Nuevo prospecto
+                      </a>
+                  </li>
+                  <li class="active">
+                      <a data-toggle="tab" href="/logout/" onclick="tabAction(this)" aria-expanded="true">Salir</a>
+                  </li>
+               </ul>
+          </div>
+      </div>
+  </div>
 
-  <section>
-    <ul>
-      <li><a href="/">Inicio</a></li>
-      <li><a href="/logout/">Salir</a></li>
-      <li><a href="/prospectos/nuevo/">Capturar prospecto</a></li>
-    </ul>
-  </section>
+  <div class="jumbotron">
+      <div class="container text-center">
+          <h1>EJH-USA | CRM</h1>
+          <h2> {% block subtitulo %}{% endblock %} </h2>
+      </div>
+  </div>
 
-  {% block content %}{% endblock %}
+      {% block content %}{% endblock %}
 
   <footer>
     <span>&copy; 2014, USA</span>

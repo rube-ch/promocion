@@ -8,10 +8,28 @@
 {% endblock %}
 
 {% block body %}
-  <header>
-    <h1>CRM EJH-USA</h1>
-    <h2>Login</h2>
-  </header>
+
+    <div role="navigation" class="navbar navbar-default navbar-static-top">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a href="/" class="navbar-brand">Inicio</a>
+          </div>
+
+      </div>
+    </div>
+
+  <div class="jumbotron">
+      <div class="container text-center">
+          <h1>EJH-USA | CRM</h1>
+          <h2> {% block subtitulo %}{% endblock %} </h2>
+      </div>
+  </div>
 
   <section>
     {% if form.errors %}
@@ -33,7 +51,7 @@
       {% else %}
         <input type="hidden" name="next" value="/crm/" />
       {% endif %}
-      <input type="submit" value="login" />
+      <input type="submit" value="Login" />
     </form>
   </section>
 {% endblock %}
