@@ -5,6 +5,10 @@
     <title></title>
 </head>
 <body>
-Captura nuevo
+    <form action="/prospectos/nuevo/" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Guardar"/>
+    </form>
 </body>
 </html>
