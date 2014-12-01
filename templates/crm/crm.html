@@ -22,9 +22,11 @@
                           Nuevo prospecto
                       </a>
                   </li>
-                  <li>
-                      <a data-toggle="tab" href="/prospectos/captura/" onclick="tabAction(this)">Reporte de captura</a>
-                  </li>
+                  {% if user.is_staff %}
+                      <li>
+                          <a data-toggle="tab" href="/prospectos/captura/" onclick="tabAction(this)">Reporte de captura</a>
+                      </li>
+                  {% endif %}
                   <li>
                       <a data-toggle="tab" href="/logout/" onclick="tabAction(this)">Salir</a>
                   </li>

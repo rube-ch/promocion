@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render_to_response, render
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from prospectos.models import ProspectoForm, Prospecto, Usuario
+from prospectos.models import ProspectoForm, Prospecto
 from django.db.models import Count
 
 # Create your views here.
