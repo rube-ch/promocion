@@ -1,6 +1,6 @@
 from django.db import models
 from django.forms import ModelForm
-
+from django.contrib.auth.models import User
 from eventos.models import Evento
 
 class Prospecto(models.Model):
@@ -39,9 +39,11 @@ class Prospecto(models.Model):
     email = models.EmailField('Correo electrónico', blank=True)
     facebook = models.CharField('Facebook', blank=True, max_length=40)
     examen_buap = models.NullBooleanField('Examen BUAP', default=False)
-    autor= models.ForeignKey('auth.User', null=True, editable=False)
+    autor= models.ForeignKey(User, null=True, editable=False)
     creado = models.DateTimeField(auto_now_add=True, null=True)
     modificado = models.DateTimeField(auto_now=True, null=True)
+
+
 
 class ProspectoForm(ModelForm):
     class Meta:

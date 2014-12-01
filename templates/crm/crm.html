@@ -11,12 +11,6 @@
   <div role="navigation" class="navbar navbar-default navbar-static-top">
       <div class="container-fluid">
           <div class="navbar-header">
-              <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
               <a href="/crm/" class="navbar-brand">Inicio</a>
           </div>
           <div class="navbar-collapse collapse">
@@ -28,8 +22,11 @@
                           Nuevo prospecto
                       </a>
                   </li>
-                  <li class="active">
-                      <a data-toggle="tab" href="/logout/" onclick="tabAction(this)" aria-expanded="true">Salir</a>
+                  <li>
+                      <a data-toggle="tab" href="/prospectos/captura/" onclick="tabAction(this)">Reporte de captura</a>
+                  </li>
+                  <li>
+                      <a data-toggle="tab" href="/logout/" onclick="tabAction(this)">Salir</a>
                   </li>
                </ul>
           </div>

@@ -1,7 +1,9 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render_to_response, render
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from prospectos.models import ProspectoForm
+from prospectos.models import ProspectoForm, Prospecto, Usuario
+from django.db.models import Count
 
 # Create your views here.
 @login_required
@@ -28,3 +30,12 @@ def prospecto_nuevo(request):
         form = ProspectoForm()
 
     return render(request, 'prospectos/nuevo.html', {'form': form})
+
+@login_required
+def captura(request):
+    """
+    If users are authenticated, direct them to the main page. Otherwise, take
+    them to the login page.
+    """
+    values = User.objects.annotate(capturados=Count('prospecto'))
+    return render(request, 'prospectos/captura.html', {'valores': values})

@@ -7,5 +7,6 @@ urlpatterns = patterns('',
 
     # Main crm entrance.
     (r'^nuevo/$', prospecto_nuevo),
+    (r'^captura/$', captura),
 
 )
