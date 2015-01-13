@@ -23,12 +23,17 @@
                       </a>
                   </li>
                   {% if user.is_staff %}
-                      <li>
-                          <a data-toggle="tab" href="/prospectos/captura/" onclick="tabAction(this)">Captura por becario</a>
-                      </li>
-                      <li>
-                          <a data-toggle="tab" href="/prospectos/captura_evento/" onclick="tabAction(this)">Captura por evento</a>
-                      </li>
+                      <li  class="dropdown">
+                          <a href="#" data-toggle="dropdown" class="dropdown-toggle">Reportes <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <li>
+                              <a href="/prospectos/captura/">Captura por becario</a>
+                          </li>
+                          <li>
+                              <a href="/prospectos/captura_evento/">Captura por evento</a>
+                          </li>
+                      </ul>
+                       </li>
                   {% endif %}
                   <li>
                       <a data-toggle="tab" href="/logout/" onclick="tabAction(this)">Salir</a>
