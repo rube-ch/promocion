@@ -4,22 +4,22 @@
 {% endcomment %}
 
 {% block head %}
-  <title>Captura por becario</title>
+  <title>Captura por evento</title>
 {% endblock %}
 
 {% block subtitulo %}
-  Captura por becario
+  Captura por evento
 {% endblock %}
 
 {% block content %}
 <table class="table" >
     <tr>
-        <th>Nombre becario</th>
+        <th>Evento</th>
         <th>Capturados</th>
     </tr>
   {% for item in valores %}
       <tr>
-          <td>{{item.first_name}} {{item.last_name}}</td>
+          <td>{{item.nombre_evento}}</td>
           <td>{{item.capturados}}</td>
       </tr>
   {% endfor %}

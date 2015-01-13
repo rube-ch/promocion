@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response, render
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from prospectos.models import ProspectoForm, Prospecto
+from eventos.models import Evento
 from django.db.models import Count
 
 # Create your views here.
@@ -39,3 +40,12 @@ def captura(request):
     """
     values = User.objects.annotate(capturados=Count('prospecto'))
     return render(request, 'prospectos/captura.html', {'valores': values})
+
+@login_required
+def captura_evento(request):
+    """
+    If users are authenticated, direct them to the main page. Otherwise, take
+    them to the login page.
+    """
+    values = Evento.objects.annotate(capturados=Count('prospecto'))
+    return render(request, 'prospectos/captura_evento.html', {'valores': values})
