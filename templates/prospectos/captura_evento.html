@@ -12,18 +12,28 @@
 {% endblock %}
 
 {% block content %}
-<table class="table" >
-    <tr>
-        <th>Evento</th>
-        <th>Capturados</th>
-    </tr>
-  {% for item in valores %}
-      <tr>
-          <td>{{item.nombre_evento}}</td>
-          <td>{{item.capturados}}</td>
-      </tr>
-  {% endfor %}
-</table>
 
+{#Código para total por evento#}
+{#<table class="table" >#}
+{##}
+{#  <tr>#}
+{#        <th>Evento</th>#}
+{#        <th>ADM</th>#}
+{#        <th>COM</th>#}
+{#        <th>DER</th>#}
+{#        <th>TUR</th>#}
+{#        <th>OTR</th>#}
+{#    </tr>#}
+{#  {% for item in valores %}#}
+{#      <tr>#}
+{#          <td>{{item.eveto__nombre_evento}}</td>#}
+{#          <td>{{item.ADM}}</td>#}
+{#          <td>{{item.COM}}</td>#}
+{#      </tr>##}
+{##}
+{##}
+{#  {% endfor %}#}
+{#</table>#}
 
+{{ valores | safe}}
 {% endblock %}

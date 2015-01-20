@@ -21,7 +21,7 @@ class Prospecto(models.Model):
     )
 
 
-    evento_id = models.ForeignKey(Evento, verbose_name='Evento')
+    evento = models.ForeignKey(Evento, verbose_name='Evento')
     #escuela_id = models.ForeignKey()
     carrera = models.CharField('Carrera', max_length=3, choices=OPC_CARRERA)
     nombre = models.CharField('Primer nombre', max_length=40,

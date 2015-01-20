@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from prospectos.models import ProspectoForm, Prospecto
 from eventos.models import Evento
 from django.db.models import Count
+import pandas as pd
+import numpy as np
 
 # Create your views here.
 @login_required
@@ -47,5 +49,16 @@ def captura_evento(request):
     If users are authenticated, direct them to the main page. Otherwise, take
     them to the login page.
     """
+    """
+    Prospectos por evento, sin detalle de carreras.
     values = Evento.objects.annotate(capturados=Count('prospecto'))
-    return render(request, 'prospectos/captura_evento.html', {'valores': values})
+    """
+    qs = Prospecto.objects.all()
+    q = qs.values('evento__nombre_evento', 'carrera')
+    prospectos_df = pd.DataFrame.from_records(q)
+    prospectos_df.rename(columns={'evento__nombre_evento': 'Evento', 'carrera': 'Carrera'}, inplace=True)
+
+    values= prospectos_df.pivot_table(rows='Evento', cols='Carrera', aggfunc=len, margins=True,
+                                      fill_value=0)
+
+    return render(request, 'prospectos/captura_evento.html', {'valores': values.to_html(classes='table')})
