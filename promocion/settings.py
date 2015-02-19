@@ -77,8 +77,16 @@ WSGI_APPLICATION = 'promocion.wsgi.application'
 if HOSTNAME == 'CIN':
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#            'ENGINE': 'django.db.backends.sqlite3',
+#            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#
+ #       },
+#        'slave': {
+            'ENGINE': 'mysql.connector.django',
+            'NAME': 'crm',
+            'USER': 'crm',
+            'PASSWORD': 'Temporal',
+            'HOST': 'localhost',
         }
     }
 else:

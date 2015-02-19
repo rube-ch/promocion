@@ -9,5 +9,6 @@ urlpatterns = patterns('',
     (r'^nuevo/$', prospecto_nuevo),
     (r'^captura/$', captura),
     (r'^captura_evento/$', captura_evento),
+    (r'^captura_examen/$', captura_examen),
 
 )

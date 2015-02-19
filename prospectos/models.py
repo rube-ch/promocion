@@ -43,7 +43,8 @@ class Prospecto(models.Model):
     creado = models.DateTimeField(auto_now_add=True, null=True)
     modificado = models.DateTimeField(auto_now=True, null=True)
 
-
+    def __str__(self):
+        return self.nombre + ' ' + self.apaterno
 
 class ProspectoForm(ModelForm):
     class Meta:
