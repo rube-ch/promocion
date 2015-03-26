@@ -4,16 +4,27 @@
 {% endcomment %}
 
 {% block head %}
-  <title>Captura nuevo prospecto</title>
+  <title>Captura nuevo prospecto BUAP</title>
 {% endblock %}
 
 {% block subtitulo %}
-  Nuevo prospecto
+  Nuevo prospecto BUAP
 {% endblock %}
 
 {% block content %}
+    {% if messages %}
+	<ul class="messages">
+	    {% for msg in messages %}
+	    <li>
+	        <div class="alert alert-{{msg.level_tag}}" role="alert">
+	    {{msg.message}}
+	    </div>
+	    </li>
+	    {% endfor %}
+	</ul>
+	{% endif %}
     <h2></h2>
-        <form action="/prospectos/nuevo/" method="post">
+        <form action="/prospectos/nuevobuap/" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Guardar prospecto"/>

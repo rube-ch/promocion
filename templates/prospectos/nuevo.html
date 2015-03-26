@@ -12,6 +12,17 @@
 {% endblock %}
 
 {% block content %}
+    {% if messages %}
+	<ul class="messages">
+	    {% for msg in messages %}
+	    <li>
+	        <div class="alert alert-{{msg.level_tag}}" role="alert">
+	    {{msg.message}}
+	    </div>
+	    </li>
+	    {% endfor %}
+	</ul>
+	{% endif %}
     <h2></h2>
         <form action="/prospectos/nuevo/" method="post">
             {% csrf_token %}

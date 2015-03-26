@@ -39,6 +39,7 @@ class Prospecto(models.Model):
     email = models.EmailField('Correo electrónico', blank=True)
     facebook = models.CharField('Facebook', blank=True, max_length=40)
     examen_buap = models.NullBooleanField('Examen BUAP', default=False)
+    matricula = models.CharField('Matrícula BUAP', max_length=10, null=True, default=None)
     autor= models.ForeignKey(User, null=True, editable=False)
     creado = models.DateTimeField(auto_now_add=True, null=True)
     modificado = models.DateTimeField(auto_now=True, null=True)
@@ -49,6 +50,15 @@ class Prospecto(models.Model):
 class ProspectoForm(ModelForm):
     class Meta:
         model = Prospecto
+        fields = ['evento', 'carrera', 'nombre', 'nombre2', 'apaterno', 'amaterno', 'telefono',
+                    'celular', 'email', 'facebook', 'examen_buap']
+        exclude =['matricula']
 
+class ProspectoBuapForm(ModelForm):
+    class Meta:
+        model = Prospecto
+        fields = ['matricula','nombre', 'nombre2', 'apaterno', 'amaterno', 'facebook', 'email', 'celular', 'telefono',
+                 'carrera']
+        exclude = ['evento', 'examen_buap']
 
 # Create your models here.
