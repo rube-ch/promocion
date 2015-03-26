@@ -1,0 +1,22 @@
+{% extends "crm/crm.html" %}
+{% comment %}
+  Pagina principal del CRM EJH-USA
+{% endcomment %}
+
+{% block head %}
+  <title>Captura nuevo prospecto</title>
+{% endblock %}
+
+{% block subtitulo %}
+  Nuevo prospecto
+{% endblock %}
+
+{% block content %}
+    <h2></h2>
+        <form action="/prospectos/nuevo/" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Guardar prospecto"/>
+        </form>
+
+{% endblock %}
