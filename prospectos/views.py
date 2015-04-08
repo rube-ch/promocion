@@ -107,3 +107,20 @@ def captura_examen(request):
     values = User.objects.filter(prospecto__evento=162).annotate(capturados=Count('prospecto'))
 
     return render(request, 'prospectos/captura_examen.html', {'valores': values})
+
+@login_required
+def captura_buapsep(request):
+
+    """If users are authenticated, direct them to the main page. Otherwise, take
+     them to the login page.
+    """
+
+    qs = Prospecto.objects.all()
+    q = qs.values('evento__nombre_evento', 'examen_buap')
+    prospectos_df = pd.DataFrame.from_records(q)
+    prospectos_df.rename(columns={'evento__nombre_evento': 'Evento', 'examen_buap': 'Examen'}, inplace=True)
+
+    values= prospectos_df.pivot_table(rows='Evento', cols='Examen', aggfunc=len, margins=True,
+                                      fill_value=0)
+
+    return render(request, 'prospectos/captura_buapsep.html', {'valores': values.to_html(classes='table')})

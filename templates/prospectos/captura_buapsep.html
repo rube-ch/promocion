@@ -1,0 +1,39 @@
+{% extends "crm/crm.html" %}
+{% comment %}
+  Pagina principal del CRM EJH-USA
+{% endcomment %}
+
+{% block head %}
+  <title>Captura BUAP/SEP por evento</title>
+{% endblock %}
+
+{% block subtitulo %}
+  Captura BUAP/SEP por evento
+{% endblock %}
+
+{% block content %}
+
+{#Código para total por evento#}
+{#<table class="table" >#}
+{##}
+{#  <tr>#}
+{#        <th>Evento</th>#}
+{#        <th>ADM</th>#}
+{#        <th>COM</th>#}
+{#        <th>DER</th>#}
+{#        <th>TUR</th>#}
+{#        <th>OTR</th>#}
+{#    </tr>#}
+{#  {% for item in valores %}#}
+{#      <tr>#}
+{#          <td>{{item.eveto__nombre_evento}}</td>#}
+{#          <td>{{item.ADM}}</td>#}
+{#          <td>{{item.COM}}</td>#}
+{#      </tr>##}
+{##}
+{##}
+{#  {% endfor %}#}
+{#</table>#}
+
+{{ valores | safe}}
+{% endblock %}

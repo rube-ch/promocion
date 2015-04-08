@@ -11,5 +11,6 @@ urlpatterns = patterns('',
     (r'^captura/$', captura),
     (r'^captura_evento/$', captura_evento),
     (r'^captura_examen/$', captura_examen),
+    (r'^captura_buapsep/$', captura_buapsep),
 
 )
