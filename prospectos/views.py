@@ -116,11 +116,15 @@ def captura_buapsep(request):
     """
 
     qs = Prospecto.objects.all()
-    q = qs.values('evento__nombre_evento', 'examen_buap')
+    q = qs.values('evento__nombre_evento', 'carrera', 'examen_buap')
     prospectos_df = pd.DataFrame.from_records(q)
     prospectos_df.rename(columns={'evento__nombre_evento': 'Evento', 'examen_buap': 'Examen'}, inplace=True)
-
-    values= prospectos_df.pivot_table(rows='Evento', cols='Examen', aggfunc=len, margins=True,
-                                      fill_value=0)
+    prospectos_df["Examen"].replace(to_replace=True, value="BUAP", inplace=True)
+    prospectos_df["Examen"].replace(to_replace=False, value="SEP", inplace=True)
+    prospectos_df["Examen"].fillna("SinInfo", inplace=True)
+    # values = prospectos_df
+    values= prospectos_df.pivot_table(rows='Evento', cols=['Examen', 'carrera'], aggfunc=len,
+                                       margins=True)
+    values.fillna(0, inplace=True)
 
     return render(request, 'prospectos/captura_buapsep.html', {'valores': values.to_html(classes='table')})
